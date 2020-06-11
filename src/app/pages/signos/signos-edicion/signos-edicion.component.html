@@ -1,0 +1,53 @@
+<form class="example-container" [formGroup]="form" #frmSignos="ngForm" (ngSubmit)="aceptar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width"> 
+        <mat-select placeholder="Selecciona paciente" formControlName="idPaciente">
+            <mat-option *ngFor="let p of pacientes" [value]="p.idPaciente">
+               {{ p.nombres }} {{ p.apellidos }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div style="padding: 10px 0;">
+        <button mat-raised-button color="primary" (click)="abrirDialogo()" type="button">
+            <mat-icon>accessibility</mat-icon>
+            <span>Nuevo Paciente</span>
+        </button>
+    </div>
+    <mat-form-field class="example-full-width">        
+        <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha"
+             formControlName="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+<!---->
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Temperatura" required formControlName="temperatura" >
+        <small *ngIf="f.temperatura.errors?.required" class="invalido">Temperatura es requerido</small>    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Pulso" required formControlName="pulso">
+        <small *ngIf="f.pulso.errors?.required" class="invalido">Pulso es requerido</small>    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ritmo Respiratorio" required formControlName="ritmo">
+        <small *ngIf="f.ritmo.errors?.required" class="invalido">Ritmo es requerido</small>    
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmSignos.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/signos-vitales' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+
+</form>

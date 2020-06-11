@@ -1,0 +1,20 @@
+<mat-toolbar>Nuevo Paciente</mat-toolbar>
+<div>
+    <mat-form-field>
+        <input matInput placeholder="Nombres" [(ngModel)]="nombres">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Apellidos" [(ngModel)]="apellidos">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="DNI" [(ngModel)]="dni">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Telefono" [(ngModel)]="telefono">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Direccion" [(ngModel)]="direccion">
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="agregar()">Aceptar</button>
+<button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
