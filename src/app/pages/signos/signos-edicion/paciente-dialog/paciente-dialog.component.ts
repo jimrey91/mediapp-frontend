@@ -35,10 +35,6 @@ export class PacienteDialogComponent implements OnInit {
     paciente.telefono = this.telefono;
     paciente.direccion = this.direccion;
 
-
-/*     this.pacienteService.registrar(paciente).subscribe(() => {
-      this.pacienteService.mensajeCambio.next('SE REGISTRO');
-    }); */
     this.pacienteService.registrar(paciente).pipe(switchMap( () => {
       return this.pacienteService.listar();
     })).subscribe(data => {
